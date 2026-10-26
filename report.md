@@ -59,9 +59,64 @@ Class names such as `CarStrategy` and `WalkStrategy` show what each class does.
 
 Each strategy has one responsibility: building a route for one transport type.
 
+
+## 3. Clean Code Principles
+
+### 1. Meaningful Names
+
+The names show the purpose of each class.
+
+Example:
+```java
+CarStrategy
+WalkStrategy
+CycleStrategy
+```
+
+### 2. Single Responsibility
+
+Each strategy has one responsibility.
+
+Example:
+```java
+public void buildRoute() {
+    System.out.println("Route calculated by car.");
+}
+```
+
 ### 3. Polymorphism
 
-All strategies implement `RouteStrategy`. The Navigator calls `buildRoute()` without checking the concrete strategy type.
+The Navigator uses the interface without checking the concrete strategy type.
+
+Example:
+```java
+public void buildRoute() {
+    strategy.buildRoute();
+}
+```
+
+### 4. Encapsulation
+
+The strategy field is private.
+
+Example:
+```java
+private RouteStrategy strategy;
+```
+
+### 5. Easy Extensibility
+
+A new strategy can be added without changing Navigator.
+
+Example:
+```java
+public class BusStrategy implements RouteStrategy {
+    @Override
+    public void buildRoute() {
+        System.out.println("Route calculated by bus.");
+    }
+}
+```
 
 ### 4. Encapsulation
 
